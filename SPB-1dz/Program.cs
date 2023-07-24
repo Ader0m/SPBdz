@@ -123,7 +123,7 @@ public partial class Program
     void PrintInvertMass(int[] a)
     {
         for (int i = 0; i < a.Length; i++)
-            a[i] = (a[i] + 1) % 2;       
+            a[i] = (a[i] + 1) % 2;
     }
 
     void InitMass(int[] a)
@@ -370,8 +370,8 @@ public partial class Program
         Title("OffsetMass");
         int[] a1 = new int[10];
         Console.WriteLine("Передаю смещение 3");
-        InitMass(a1);       
-        PrintMass(a1);        
+        InitMass(a1);
+        PrintMass(a1);
         OffsetMass(a1, 3);
         PrintMass(a1);
         Console.WriteLine("Передаю смещение -3");

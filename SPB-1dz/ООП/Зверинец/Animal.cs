@@ -1,14 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace SPB_1dz.ООП.Зверинец
+﻿namespace SPB_1dz.ООП.Зверинец
 {
     abstract class Animal
     {
-        public string Name
+        public string? Name
         {
             get { return _name; }
             set
@@ -19,7 +13,7 @@ namespace SPB_1dz.ООП.Зверинец
                     Console.WriteLine("Имя не может быть меньше 3 букв");
             }
         }
-        public static int AnimalCount = 0;
+        public static int Count = 0;
         protected string? _name;
         protected int _swimPower;
         protected int _jumpPower;
@@ -33,7 +27,7 @@ namespace SPB_1dz.ООП.Зверинец
                 Console.WriteLine("Создание животного завершилось ошибкой");
                 return;
             }
-            AnimalCount++;
+            Count++;
         }
 
         public void Jump(int length)
@@ -44,7 +38,6 @@ namespace SPB_1dz.ООП.Зверинец
             else
                 Console.Write("не смог ");
             Console.WriteLine($"прыгнуть на заданную высоту");
-
         }
 
         public void Run(int length)

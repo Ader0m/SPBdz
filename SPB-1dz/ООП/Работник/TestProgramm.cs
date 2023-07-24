@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace SPB_1dz.ООП.Работник
+﻿namespace SPB_1dz.ООП.Работник
 {
     internal class TestProgramm
     {
@@ -18,7 +12,7 @@ namespace SPB_1dz.ООП.Работник
             _employees.Add(new("fio3", "f3", "em3", "8926", 100000, 52));
             _employees.Add(new("fio4", "f4", "em4", "0123", 20000, 21));
 
-            foreach(Employee emp in _employees)
+            foreach (Employee emp in _employees)
             {
                 if (emp.Age > 30)
                 {

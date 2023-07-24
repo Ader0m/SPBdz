@@ -1,6 +1,4 @@
-﻿using SPB_1dz.ООП.Зверинец;
-
-namespace SPB_1dz.ООП.Зверинец
+﻿namespace SPB_1dz.ООП.Зверинец
 {
     internal static class TestProgramm
     {
@@ -22,9 +20,9 @@ namespace SPB_1dz.ООП.Зверинец
 
         public static void CountZoo()
         {
-            Console.WriteLine($"Животных - {Animal.AnimalCount}");
-            Console.WriteLine($"Котов - {Cat.CatCount}");
-            Console.WriteLine($"Собак - {Dog.DogCount}");
+            Console.WriteLine($"Животных - {Animal.Count}");
+            Console.WriteLine($"Котов - {Cat.Count}");
+            Console.WriteLine($"Собак - {Dog.Count}");
         }
     }
 }
