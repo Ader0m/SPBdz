@@ -1,7 +1,12 @@
-﻿namespace SPB_1dz.ООП.Зверинец
+﻿using System.Text;
+
+namespace SPB_1dz.ООП.Зверинец
 {
     abstract class Animal
     {
+        protected delegate void OnAction(bool successful, string action);
+        protected OnAction onActionEvent;
+
         public string? Name
         {
             get { return _name; }
@@ -13,7 +18,7 @@
                     Console.WriteLine("Имя не может быть меньше 3 букв");
             }
         }
-        public static int Count = 0;
+        public static int Count { get; private set; } = 0;
         protected string? _name;
         protected int _swimPower;
         protected int _jumpPower;
@@ -28,36 +33,61 @@
                 return;
             }
             Count++;
+            onActionEvent += PrintActionResult;
         }
 
-        public void Jump(int length)
+        ~Animal()
         {
-            Console.Write($"{Name} ");
+            onActionEvent -= PrintActionResult;
+        }
+
+        public virtual bool Jump(int length)
+        {
+            bool result;
             if (_jumpPower >= length)
-                Console.Write("смог ");
+                result = true;
             else
-                Console.Write("не смог ");
-            Console.WriteLine($"прыгнуть на заданную высоту");
+                result = false;
+            onActionEvent.Invoke(result, "Прыгнуть");
+
+            return result;
         }
 
-        public void Run(int length)
+        public virtual bool Run(int length)
         {
-            Console.Write($"{Name} ");
+            bool result;
             if (_runPower >= length)
-                Console.Write("смог ");
+                result = true;
             else
-                Console.Write("не смог ");
-            Console.WriteLine($"прыгнуть на заданную высоту");
+                result = false;
+            onActionEvent.Invoke(result, "Пробежать");
+
+            return result;
         }
 
-        public void Swim(int length)
+        public virtual bool Swim(int length)
         {
-            Console.Write($"{Name} ");
+            bool result;
             if (_swimPower >= length)
-                Console.Write("смог ");
+                result = true;
             else
-                Console.Write("не смог ");
-            Console.WriteLine($"прыгнуть на заданную высоту");
+                result = false;
+            onActionEvent.Invoke(result, "Проплыть");
+
+            return result;
         }
+
+        protected virtual void PrintActionResult(bool successful, string action)
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append($"{Name} ");
+            if (successful)
+                sb.Append("смог ");           
+            else
+                sb.Append("не смог ");
+            sb.AppendLine($"{action} заданное расстояние");
+
+            Console.WriteLine(sb.ToString());
+        }       
     }
 }

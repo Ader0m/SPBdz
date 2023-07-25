@@ -2,7 +2,7 @@
 {
     internal class Cat : Animal
     {
-        public static new int Count = 0;
+        public static new int Count { get; private set; } = 0;
 
         public Cat(string name) : base(name)
         {
